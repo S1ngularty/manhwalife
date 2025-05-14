@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -83,6 +83,79 @@
         </div>
     </div>
     <script src="index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="js_jquery.js"></script>
 </body>
 
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fruit Filter Practice</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <h2>Fruit List</h2>
+
+  <ul id="fruitList">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Avocado</li>
+    <li>Orange</li>
+    <li>Kiwi</li>
+    <li>Apricot</li>
+    <li>Papaya</li>
+    <li>Guava</li>
+  </ul>
+
+  <button id="btnA">Starts with "A"</button>
+  <button id="btnLong">Longer than 5 letters</button>
+  <button id="btnEndsWithA">Ends with "a"</button>
+  <button id="btnReset" onclick="Reset()">Reset</button>
+
+  <div class="label" style="margin-top: 10px; font-style: italic;"></div>
+
+  <script>
+    $('#btnA').click(function(){
+        Reset();
+        $('li').each(function(){
+            let elementVal=$(this).text();
+            if(elementVal.charAt(0)=='A'){
+                $(this).css('font-weight','bold');
+            }
+        });
+        activityLabel("highlights the list starting with letter A");
+    });
+
+      $('#btnLong').click(function(){
+        Reset();
+        $('li').each(function(){
+            let elementVal=$(this).text();
+            if(elementVal.length>5){
+                $(this).css('font-weight','bold');
+            }
+        });
+        activityLabel("highlights the list that is greater than to 5");
+    });
+
+      $('#btnEndsWithA').click(function(){
+        Reset();
+        $('li').each(function(){
+            let elementVal=$(this).text();
+            if(elementVal.charAt(elementVal.length-1)=='a'){
+                $(this).css('font-weight','bold');
+            }
+        });
+        activityLabel("highlights the list that ends with letter a");
+    });
+    const activityLabel= (message)=> $('body').prepend(`<h4 id='label'>${message}</h4>`);
+    const Reset= ()=>{
+         $('li').css('font-weight','');
+         $('#label').remove();
+    };
+</script>
+
+</body>
 </html>
