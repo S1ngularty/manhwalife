@@ -1,3 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fruit Classifier</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .label {
+      margin-top: 10px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Fruit List</h2>
+
+  <ul id="fruitList">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Avocado</li>
+    <li>Orange</li>
+    <li>Kiwi</li>
+    <li>Apricot</li>
+    <li>Papaya</li>
+    <li>Guava</li>
+  </ul>
+
+  <button id="btnTropical">Show Tropical Fruits</button>
+  <button id="btnNonTropical">Show Non-Tropical Fruits</button>
+  <button id="btnReset" onclick="reset()">Reset</button>
+
+  <div class="label" id="label"></div>
+
+  <script>
+
+    $('#btnTropical').click(function(){
+        reset();
+        const tropicalFruits = ["Apple", "Banana", "Orange", "Papaya"];
+        $('li').each(function(){
+            if(tropicalFruits.includes($(this).text())){ 
+                $(this).css('font-weight','bold').text($(this).text()+"[tropical]")
+            };
+        })
+        searching("highlighting the tropical fruits"); 
+    }); 
+
+    $('#btnNonTropical').click(function(){
+        reset();
+    const nonTropicalFruits = ["Avocado", "Apricot", "Guava", "Kiwi"];
+            $('li').each(function(){
+            if(nonTropicalFruits.includes($(this).text())){ 
+                $(this).css('font-weight','bold').text($(this).text()+"[Non Tropical]");
+            };
+        }) 
+        searching("highlighting the non tropical fruits");
+    }); 
+    const searching= (message)=> $('body').prepend(`<h4 id='label'>Searching:${message}...</h4>`)       
+    function reset(){
+        
+         $('li').removeAttr('style');
+         $('li').text($(this).attr('data-original-text'));
+         $('#label').remove();
+    }
+  </script>
+
+</body>
+</html>
+
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,7 +157,7 @@
 
 </html> -->
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <title>Fruit Filter Practice</title>
@@ -158,4 +226,6 @@
 </script>
 
 </body>
-</html>
+</html> -->
+
+
